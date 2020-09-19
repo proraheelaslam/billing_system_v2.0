@@ -199,6 +199,10 @@ Route::get('/pdf_test','Frontend\ContactController@checkPdf');
 
 Route::post('/login','Auth\LoginController@postLogin');
 
+Route::get('/dev/test', function(){
+   return 'dev server';
+});
+
 
 
 
