@@ -6,5 +6,3 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 /config/snappy-local.php
-.env
-/public/uploads
