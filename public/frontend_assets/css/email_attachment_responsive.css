@@ -1,0 +1,120 @@
+@media (min-width: 1700px) and (max-width: 2800px) {   
+ 
+
+}
+
+@media (min-width: 1280px) and (max-width:1365px) {   
+}
+
+
+
+
+
+ 
+
+
+@media (min-width:1024px) and (max-width:1279px) {  
+  
+   
+  
+
+}
+
+
+
+ 
+
+
+
+
+
+
+
+
+@media (min-width:768px) and (max-width:1023px) {  
+ 
+.usrPro_user_form .col12_mob{ width:50%; }
+ .usrPro_right_content{ padding:15px; padding-left:5px; }
+.usrPro_tabs_show_inner{ height: calc(100vh - 94px); }
+.usrPro_infoBox_inner{ padding:15px; }
+
+.usrPro_infoBox_security .col12_mob{ width:100%; }
+ 
+.eTemp_editor_main { height: calc(100vh - 174px) !important; }
+
+  
+}
+
+@media (min-width:200px) and (max-width:767px) { 
+ 
+.col12_mob{ width:100%;  }
+.eTemp_header{ padding-top:10px;  }
+.eTemp_header_inner{ padding:0px 15px; display:block; position:relative; }
+.eTemp_avatar{ display:block; width:100%; padding-right:110px; padding-bottom:10px; }
+.eTemp_avatar em{ width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.eTemp_header_menu{ padding-left:0px; width:100%; display:block; }
+.eTemp_header_menu ul li{ padding-right:15px;}
+
+.eTemp_header_send{ width:auto; display:block; position:absolute; right:50px; top:4px; }
+.insEmail_close_parent{ width:35px; display:block; position:absolute; right:15px; top:6px; }
+
+.eTemp_toSubject_header_inner{ padding-left:15px; padding-right:15px; } 
+.eTemp_editor_inner{ padding-left:15px; padding-right:15px; } 
+.eTemp_ccBcc_btns{ right:15px; position:initial; padding:10px 15px 0px 15px; overflow:hidden;  }
+
+.eTemp_to_row{ padding-right:0px; }
+.eTemp_editor_inner .fr-toolbar{ padding-left: 10px !important; padding-right: 60px !important; } 
+.eTemp_default_attached_icon{ background-size:30px auto; right: 10px; }
+ .eTemp_header_menu ul li a{ font-size:13px; }
+.eTemp_editor_main{ height:auto !important; padding-bottom:100px;  }
+.eTemp_attachedFiles_inner ul li{ padding:6px 10px; }
+
+.toSubject_dropdown li{ position:relative; }
+ 
+ .toSubject_dropdown_sub{ position:initial !important; left:0px !important; top:100% !important;  }
+
+
+
+
+.eTmp_selectedEmail_tag{ word-break: break-all; }
+.toSubject_selected_text{ min-width:100px; max-width:100%; }
+
+
+.ins_eTemp_iframe .fr-view{ font-size:16px; }
+ 
+}
+
+
+
+
+@media (min-width:200px) and (max-width:350px) { 
+ }
+
+
+@media (min-width:450px) and (max-width:767px) { 
+ 
+ }
+
+
+@media (min-width:515px) and (max-width:767px) { 
+ }
+
+
+
+
+
+
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : landscape) { 
+ }
+
+
+
+ 
+
+
+

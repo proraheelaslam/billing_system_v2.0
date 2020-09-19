@@ -1,0 +1,125 @@
+/**********************developer *************/
+
+
+.disabled_loader{ position:relative; }
+.disabled_loader::after { content: ""; width: 100%; height: 100%; position: absolute; left: 0px; top: 0px; background: url(../../frontend_assets/images/Ajax-loader.gif) no-repeat center center; background-size: 30px auto; background-color: rgba(255,255,255,0.8); }
+.error_text {
+    color: #c24445;
+    display: block;
+    font-style: normal;
+    font-size: 15px;
+    padding-bottom: 4px;
+    line-height: 20px;
+}
+.add_new_client_button { margin-top: 12px; }
+
+.taxes_main .profile_edit_feild .tax_field { text-align: center !important; }
+.taxes_main .profile_edit_feild .tax_field.active{     border: 2px solid #93c47d; }
+.taxes_main .profile_edit_feild .tax_field:hover {    cursor: pointer }
+
+.menu_detail.all_field_disable #edit_client_form ul li .profile_box input  { background-color: #f3f3f3 !important; pointer-events: none; }
+.menu_detail.all_field_disable #edit_client_form ul li .profile_box .addClient_lang ul li a { background-color: #f3f3f3 !important; pointer-events: none; }
+
+.addNewQuote_detail.all_field_disable .profile_list ul li .profile_box input,
+.addNewQuote_detail.all_field_disable  textarea , .addNewQuote_detail.all_field_disable .addquote_addBtn,
+.addNewQuote_detail.all_field_disable .addquote_delBtn { background-color: #f3f3f3 !important; pointer-events: none; }
+
+
+
+.autosizeTextArea {
+    overflow: hidden !important;
+
+}
+
+.folder_section_list .not_found_folder_msg { text-align: center;
+    position: relative;
+    left: 5px;
+    width: 100%;
+    top: 71px;
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #999;
+ }
+
+.folder_section_detail span {
+    font-style: italic;
+}
+
+
+
+.organization_logo_btns .all_buttons {
+    min-width: 100%;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.organization_logo_btns button {
+    outline: none;
+    position: relative;
+    cursor: pointer;
+
+}
+.organization_logo_btns button input {
+    width: 100%;
+    height: 100%;
+    font-size: 0px;
+    opacity: 0;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+.img_place_box {
+
+     background: #ffffff;
+     border: 1px solid #cccccc;
+     border-radius: 0px;
+    /*box-shadow: 0px 0px 8px rgba(0,0,0, 0.2);*/
+
+}
+.anchor_text_sec a {
+    font-size: 16px;
+    line-height: 1.4em;
+}
+
+.disabled_class { pointer-events: none; }
+.menu_logo_sec ul li { width: unset !important; vertical-align: middle; }
+.menu_logo_sec .all_buttons { border-radius: 11px !important; }
+
+
+.logo_btn_sec a {
+    width: 158px;
+    padding-left: 0px;
+    padding-right: 0px; }
+
+
+
+.change_log_section { max-width: 200px; max-height: 200px; }
+.stats_sec .nextPrev_btns{     left: 30px;}
+
+.highcharts-credits { display: none }
+
+
+
+
+
+
+
+@media(max-width:767px) {
+  .onoff_switch a {
+      bottom: 31px;
+  }
+
+
+    .organization_logo_btns { max-width: unset; }
+    .input_file_sec {
+        padding-top: 0px !important ; position:unset; }
+    .menu_logo_sec ul li { padding-bottom: 20px !important; }
+    .main_logo a { max-width: 120px;}
+    .change_log_section {     max-width: 129px; margin: auto;
+        max-height: 200px;}
+    .menu_logo_sec ul li:first-child { width: 100% !important; }
+    #image_place_sec { display: block; margin: auto; }
+
+
+}
