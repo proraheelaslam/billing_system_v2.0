@@ -26,9 +26,10 @@ class BillingController extends Controller
             $q->where('is_quote_converted',0);
         }])->whereHas('quotes',function ($q) {
             $q->where('type','quote')->where('is_quote_converted',0);
-        })->where('user_id', Auth::user()->id)->get();
+        })->where('user_id', Auth::user()->id)->orderBy('last_name')->get();
 
-        $nonClientQoutes = Quote::where('type','quote')->where('is_quote_converted',0)->where('client_id',0)->where('user_id', Auth::user()->id)->get();
+        $nonClientQoutes = Quote::where('type','quote')->where('is_quote_converted',0)->where('client_id',0)
+                            ->where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
         //
         $data['clientExistantQoutes'] = $clientExistantQoutes;
         $data['nonClientQoutes'] = $nonClientQoutes;
@@ -45,11 +46,10 @@ class BillingController extends Controller
 
         $nonClientQoutes = Quote::where('type','quote')->where('is_quote_converted',0)->where('client_id',0)->where(function ($q) use ($srchKeyword){
             $q->where('name', 'like', '%' . $srchKeyword . '%')->orWhere('concern', 'like', '%' . $srchKeyword . '%');
-        })->orderBy('id','desc')->where('user_id', Auth::user()->id)->get();
-
-
+        })->where('user_id', Auth::user()->id)->orderBy('last_name')->get();
 
         $clientExistantQoutes = Client::with(['quotes' => function ($q) use ($srchKeyword){
+
             $q->where('type','quote')->where('is_quote_converted',0)->where(function ($query) use ($srchKeyword){
                 $query->where('name', 'like', '%' . $srchKeyword . '%')
                     ->orWhere('concern', 'like', '%' . $srchKeyword . '%');
@@ -59,7 +59,7 @@ class BillingController extends Controller
                 $query->where('name', 'like', '%' . $srchKeyword . '%')
                     ->orWhere('concern', 'like', '%' . $srchKeyword . '%');
             });
-        })->where('user_id', Auth::user()->id)->orderBy('id','desc')
+        })->where('user_id', Auth::user()->id)->orderBy('last_name')
             ->get();
 
         $data['clientExistantQoutes'] = $clientExistantQoutes;
@@ -72,10 +72,10 @@ class BillingController extends Controller
 
     public function billsList(){
 
-      $bills =   Quote::where('is_bill_send',1)->orderBy('is_final_review_bill','asc')->where('user_id', Auth::user()->id)->get();
+      $bills =   Quote::where('is_bill_send',1)->orderBy('is_final_review_bill','asc')->where('user_id', Auth::user()->id)->orderBy('updated_at','desc')->get();
 
       $total_unpaid = Quote::where('status','unpaid')->where('is_bill_send',1)->where('user_id', Auth::user()->id)->count();
-      $total_paid = Quote::where('status','paid')->where('is_bill_send',1)->where('user_id', Auth::user()->id)->count();
+      $total_paid =  Quote::where('status','paid')->where('is_bill_send',1)->where('user_id', Auth::user()->id)->count();
       $data['bills'] = $bills;
       $data['total_unpaid'] = $total_unpaid;
       $data['total_paid'] = $total_paid;
@@ -119,7 +119,7 @@ class BillingController extends Controller
             $q->where('concern', 'like', '%' . $srchKeyword . '%');
             $q->orWhere('name', 'like', '%' . $srchKeyword . '%');
             $q->orWhere('concern_address', 'like', '%' . $srchKeyword . '%');
-        })->where('user_id', Auth::user()->id);
+        })->where('user_id', Auth::user()->id)->orderBy('updated_at','desc');
         $data['bills'] = $billData->get();
         $billCollection = collect($billData->get());
         $unPaid = count($billCollection->where('status','unpaid')->all());
@@ -156,7 +156,12 @@ class BillingController extends Controller
             $data['qoute'] = $qoute;
             $data['user'] = Auth::user();
             $data['email_template'] = $tmp->first();
-           // dd($data);
+            $data['subject_line'] = $qoute->concern . ' '.$qoute->address;
+            if($qoute->client_id === 0) {
+                $data['subject_line'] = $qoute->concern;
+            }
+
+            //dd($data);
             return view($this->viewPath . '/email_attachment/attachment', compact('data'));
         }
 

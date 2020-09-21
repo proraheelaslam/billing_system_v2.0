@@ -42,15 +42,23 @@
                             <td>
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" table-layout: fixed;">
                                     <tr>
-                                        <td style="padding: 0px 20px 0px 0px; margin: 0px;">
+                                        <td style="padding: 0px 20px 0px 0px; margin-left: 40px;">
 
-                                            <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;">{{@$client['last_name']}}  {{@$client['first_name']}} </p>
-                                            <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;"> {{@$client['street_number']}} {{@$client['street']}}  </p>
-                                            <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;"> {{@$client['municipality']}} </p>
-                                            <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;" >{{@$client['tva_number']}} </p>
+                                            <p style="padding: 0px; margin-left: 40px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;">{{ Auth::user()->name }}  </p>
+                                            <p style="padding: 0px; margin-left: 40px;font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;">{{ Auth::user()->street_number }} {{ Auth::user()->street }}  </p>
+                                            <p style="padding: 0px; margin-left: 40px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;">{{ Auth::user()->postal_code }} {{ Auth::user()->municipality }} </p>
+                                            <p style="padding: 0px; margin-left: 40px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;" >{{ Auth::user()->tva_number }} </p>
+
                                         </td>
                                         <td style="padding: 0px 20px 0px 0px; margin: 0px;"> </td>
-                                        <td style="padding: 0px 0px 0px 0px; margin: 0px;"> </td>
+                                        <td style="padding: 0px 0px 0px 0px; margin-left: 30px;">
+
+                                            <p style="padding: 0px; margin-left: 30px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;">{{@$client['last_name']}}  {{@$client['first_name']}} </p>
+                                            <p style="padding: 0px; margin-left: 30px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;"> {{@$client['street_number']}} {{@$client['street']}}  </p>
+                                            <p style="padding: 0px; margin-left: 30px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;"> {{@$client['municipality']}} </p>
+                                            <p style="padding: 0px; margin-left: 30px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;" >{{@$client['tva_number']}} </p>
+
+                                        </td>
                                     </tr>
                                 </table>
                             </td>
@@ -228,46 +236,7 @@
                     </table>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                        <tr><td height="10"></td></tr>
-                        <tr>
-                            <td>
-                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                                    <tr>
-                                        <td>
-                                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                                                <tr>
-                                                    <td width="50%" valign="top">
-                                                        <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;">
-                                                        </p>
-                                                    </td>
-                                                    <td width="50%" valign="top">
-                                                        <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial; text-align: right;">
-                                                            {{$user->name}}
-                                                        </p>
-                                                        <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial; text-align: right;">
-                                                            {{$user->steet_number}}  {{$user->street}}
-                                                        </p>
-                                                        <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial; text-align: right;">
-                                                            {{$user->municipality}}
-                                                        </p>
-                                                        <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial; text-align: right;">
-                                                            {{$user->tva_number}}
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr><td height="20"></td></tr>
-                    </table>
-                </td>
-            </tr>
+
             <tr>
                 <td>
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -290,7 +259,10 @@
                                                             BIC : {{$user->bic}}
                                                         </p>
                                                         <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;">
-                                                            Merci de bien vouloir mentionnez la reference : <b style="font-weight: bold;">{{$quote_number}}</b>
+                                                            Merci de bien vouloir mentionner la référence : <b style="font-weight: bold;">{{$quote_number}}</b>
+                                                        </p>
+                                                        <p style="padding: 0px; margin: 0px; font-size: 16px; line-height: 1.5em; color: #000;font-family: arial;">
+                                                            N’hésitez pas à me joindre au {{$user->phone_number}} si nécessaire.
                                                         </p>
                                                     </td>
                                                 </tr>

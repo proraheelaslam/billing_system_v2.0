@@ -176,8 +176,15 @@ $("#submit_contact_form").click(function(e){
     $("body").on('click','.qt_add_new_btn', function () {
         let status = $(this).attr('data-status');
         let q_type = $(this).attr('data-type');
+        let isNonClient = $(this).attr('data-nonClient');
+
         if(status === "new" && q_type == 'quote'){
-            saveQuotes('quote','new_quote',0,1);
+            if(isNonClient) {
+                saveQuotes('non_client','quote','new_quote',0,1);
+            }else{
+                saveQuotes('quote','new_quote',0,1);
+            }
+
         }else if(status === "new" && q_type === 'bill'){
             saveQuotes('bill','new',0,1);
         }else {
@@ -189,7 +196,13 @@ $("#submit_contact_form").click(function(e){
 
 
     $("body").on('click','.qt_add_bill', function () {
-        saveQuotes('bill','new_bill');
+        let isNonClient = $(this).attr('data-nonclient');
+        if(isNonClient) {
+            saveQuotes('non_client','bill','new_bill');
+        }else{
+            saveQuotes('bill','new_bill');
+        }
+
     });
     //
     // update exising quote attach with existing client
@@ -207,8 +220,12 @@ $("#submit_contact_form").click(function(e){
 
         let type = $(this).attr('data-type');
         //let actionType = $(this).attr('data-status');
+        if (type == 'convertor') {
+            saveQuotes('non_client','quote');
+        }else{
+            saveQuotes('non_client',type);
+        }
 
-        saveQuotes('non_client',type);
     });
 
 
@@ -1110,6 +1127,7 @@ function saveQuotes(qType,actionType,isSendEmail,isSameAddress) {
     let langTone = $('.profile_list').find('.client_language_tone').find('li a.active').attr('data-name');
     let subTotal_arr = [];
     let sub_total_amount = 0;
+    let clientData = {};
 
     if ($.trim(concern) === ""){
         $(".qt_concern_text").after('<p class="error_text">Concerne is required.</p>');
@@ -1134,6 +1152,16 @@ function saveQuotes(qType,actionType,isSendEmail,isSameAddress) {
         }
         postData['qoute_id'] = $(".quote_id").val();
         quoteType = 'bill';
+
+        clientData['last_name'] =  $(".qoute_name").val();
+        clientData['first_name'] = '';
+        clientData['street'] = $(".qoute_address").val();
+        clientData['street_number'] =  '';
+        clientData['municipality'] = $(".qoute_postal_code_city").val();
+        clientData['tva_number'] = $(".quote_tva").val();
+
+
+
 
 
     }else if (qType ==  'quote' && actionType == 'new_quote'){
@@ -1209,7 +1237,7 @@ function saveQuotes(qType,actionType,isSendEmail,isSameAddress) {
     let sub_total_tax_amount = sub_total_amount+tva_tax;
 
 
-    let clientData = {};
+
     if ($(".qt_client_info_sec").attr('data-client') !== undefined) {
         clientData = JSON.parse($(".qt_client_info_sec").attr('data-client'));
     }
@@ -1263,7 +1291,7 @@ function saveQuotes(qType,actionType,isSendEmail,isSameAddress) {
 
     console.log(postData);
 
-   //return false;
+  // return false;
     let url = app_url+'/quote/save';
     if (status) {
         if (isSendEmail === 1) {

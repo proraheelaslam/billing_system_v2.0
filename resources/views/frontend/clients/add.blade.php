@@ -290,9 +290,12 @@
                             </div>
                           </div>
                         </div>
+                        <div class="client_add_del">
+                          <a style="display: block" class="addClient_addBtn" href="javascript:void(0);"><i class="fa fa-plus"></i></a>
+                          <a style="display: none;" class="addClient_delBtn" href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+                        </div>
                       </div>
-                      <a style="display: block" class="addClient_addBtn" href="javascript:void(0);"><i class="fa fa-plus"></i></a>
-                      <a style="display: none;" class="addClient_delBtn" href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+
                     </div>
 
 

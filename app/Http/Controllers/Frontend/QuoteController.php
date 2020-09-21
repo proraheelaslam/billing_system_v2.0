@@ -31,17 +31,18 @@ class QuoteController extends Controller
 
         $clientExistantQoutes = Client::with(['quotes'])->whereHas('quotes',function ($q) {
                                         $q->where('type','quote')->whereIn('is_send',[0,1]);
-                                    })->where('user_id', Auth::user()->id)->get();
+                                    })->where('user_id', Auth::user()->id)->orderBy('last_name')->get();
 
-        $nonClientQoutes = Quote::where('type','quote')->where('client_id',0)->where('user_id', Auth::user()->id)->get();
+        $nonClientQoutes = Quote::where('type','quote')->where('client_id',0)->where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
         //
         if (\request()->type == 'quote') {
 
             $clientExistantQoutes = Client::with('quotes')->whereHas('quotes', function ($q) {
                                      $q->where('type','quote');
                                     })->where('user_id', Auth::user()->id)
-                                   ->orderBy('id','desc')->where('user_id', Auth::user()->id)->get();
-            $nonClientQoutes = Quote::where('client_id',0)->where('type','quote')->where('user_id', Auth::user()->id)->get();
+                                    ->where('user_id', Auth::user()->id)->orderBy('last_name')->get();
+
+            $nonClientQoutes = Quote::where('client_id',0)->where('type','quote')->where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
 
         }
 
@@ -57,11 +58,11 @@ class QuoteController extends Controller
 
         $clientExistantQoutes = Client::with('quote_bills')->whereHas('quote_bills',function ($q) {
                                      $q->where('is_quote_converted',1);
-                                })->orderBy('id','desc')->where('user_id', Auth::user()->id)->get();
+                                })->where('user_id', Auth::user()->id)->orderBy('last_name')->get();
 
         $nonClientQoutes = Quote::whereIn('type',['bill','quote'])->where('is_quote_converted',1)
                                   ->where('client_id',0)
-                                  ->where('user_id', Auth::user()->id)->get();
+                                  ->where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
         //
         $data['clientExistantQoutes'] = $clientExistantQoutes;
         $data['nonClientQoutes'] = $nonClientQoutes;
@@ -324,18 +325,19 @@ class QuoteController extends Controller
         $srchKeyword = $request->q;
 
         $nonClientQoutes = Quote::whereIn('type', ['bill', 'quote'])->where('is_quote_converted', 1)
-            ->where('client_id', 0)
-            ->where('user_id', Auth::user()->id)->get();
+                                    ->where('client_id', 0)
+                                    ->where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
         //
         if(!empty($srchKeyword)) {
             $nonClientQoutes = Quote::where('type','bill')->where('client_id',0)->where(function ($q) use ($srchKeyword){
                 $q->where('name', 'like', '%' . $srchKeyword . '%')->orWhere('concern', 'like', '%' . $srchKeyword . '%');
-            })->where('user_id', Auth::user()->id)->get();
+            })->where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
         }
         //
         $clientExistantQoutes = Client::with('quote_bills')->whereHas('quote_bills',function ($q) {
-            $q->where('is_quote_converted',1);
-        })->orderBy('id','desc')->where('user_id', Auth::user()->id)->get();
+                                   $q->where('is_quote_converted',1);
+        })->where('user_id', Auth::user()->id)->orderBy('last_name')->get();
+
         if(!empty($srchKeyword)) {
             $clientExistantQoutes = Client::with(['quote_bills' => function ($q) use ($srchKeyword){
                 $q->where('is_quote_converted',1)->where('concern', 'like', '%' . $srchKeyword . '%')
@@ -343,7 +345,7 @@ class QuoteController extends Controller
             }])->whereHas('quote_bills', function ($query) use ($srchKeyword){
                 $query->where('is_quote_converted',1)->where('concern', 'like', '%' . $srchKeyword . '%')
                     ->orWhere('concern', 'like', '%' . $srchKeyword . '%');
-            })->where('user_id', Auth::user()->id)->orderBy('id','desc')
+            })->where('user_id', Auth::user()->id)->orderBy('last_name')
                 ->get();
         }
 
@@ -369,7 +371,7 @@ class QuoteController extends Controller
 
         $nonClientQoutes = Quote::where('type','quote')->where('client_id',0)->where(function ($q) use ($srchKeyword){
             $q->where('name', 'like', '%' . $srchKeyword . '%')->orWhere('concern', 'like', '%' . $srchKeyword . '%');
-        })->orderBy('id','desc')->where('user_id', Auth::user()->id)->get();
+        })->where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
 
 
 
@@ -383,7 +385,7 @@ class QuoteController extends Controller
                 $query->where('name', 'like', '%' . $srchKeyword . '%')
                     ->orWhere('concern', 'like', '%' . $srchKeyword . '%');
             });
-        })->where('user_id', Auth::user()->id)->orderBy('id','desc')
+        })->where('user_id', Auth::user()->id)->orderBy('last_name')
             ->get();
 
         $data['clientExistantQoutes'] = $clientExistantQoutes;

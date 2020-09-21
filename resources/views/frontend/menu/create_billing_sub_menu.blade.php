@@ -28,7 +28,7 @@
               </li>
               <li>
                 <div class="create_quote_btn">
-                  <a href="{{route('without_quote.add_bill')}}">Client Non-Existant</a>
+                  <a href="{{route('without_quote.add_bill',['is_non_client'=>1])}}">Client Non-Existant</a>
                 </div>
               </li>
             </ul>

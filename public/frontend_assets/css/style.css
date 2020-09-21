@@ -105,7 +105,7 @@ background-size: auto auto; position: relative; background-color: #f7f7f7; }
 
 .contact_auto{ max-width: 900px; margin: auto; padding: 0px 15px; }
 
-.contact_form{ width: 87%; padding: 79px 0px 42px 65px; }
+.contact_form{ width: 100%; padding: 79px 0px 42px 65px; max-width: 560px; }
 
 .contact_form ul li{ padding-bottom: 20px; }
 .contact_form ul li:last-child{ padding-bottom: 0px; }
@@ -119,7 +119,7 @@ border: 1px solid #cfcfcf; background: #f7f7f7; border-radius: 20px; transition:
 
 .contact_form_feild input:focus, .contact_form_feild textarea:focus { border-color: #4b9ddc!important; box-shadow:0 0 3px #11969f; }
  
-.contact_form_feild textarea{ height: 160px; width: 74%; }
+.contact_form_feild textarea{ height: 160px; width: 100%; }
 .addNote_inner .contact_form_feild textarea{ width: 100%; }
 
 .contact_form_feild input ::-webkit-input-placeholder {
@@ -342,7 +342,8 @@ position: absolute; right: 1px; top: 1px; font-size: 0px; cursor: pointer; trans
 
 .addClient_addBtn, .addClient_delBtn{ width: 45px; height: 45px; display: block; font-size: 14px; line-height: 26px; color: #fff; transition: all 0.3s ease;
 background: #93c47d; border-radius: 4px; padding: 10px; text-align: center; border: 2px solid #64a448;
-position: absolute; right: -80px; top: 50%; margin-top: -22px; }
+ margin-bottom: 10px; }
+
 
 .addClient_delBtn{ border-color: #e06666; background: #e06666; }
 
@@ -953,7 +954,9 @@ position: absolute; left: -40px; top: 33%; display: block; }
 
 
 
-
+.client_add_del { position: absolute;
+    right: -80px;
+    top: 60px; }
 
 
 /**************************phase 7 end style here**************************/

@@ -64,7 +64,7 @@
               <div class="profile_box_tableCell">
                 <div class="profile_edit_feildOut">
                   <div class="profile_edit_feild">
-                    <input type="text" class="email_subject" value="{{$qoute->concern}} {{$qoute->address}}">
+                    <input type="text" class="email_subject" value="{{$data['subject_line']}}">
                   </div>
                 </div>
               </div>

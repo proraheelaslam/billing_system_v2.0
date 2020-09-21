@@ -17,6 +17,9 @@
                  $menuText = '<span>Espace Facturation</span>';
                  $sendMailBtnText = 'Envoyer Facture';
                  $buttonType = 'bill';
+                 if (request()->is_non_client == 1){
+                       $prev_type = 1;
+                  }
        }else if (request()->is_non_client == 1){
            $prev_type = 1;
      }
@@ -315,12 +318,12 @@
                                         <div class="menu_box_table addquote_btns_main">
                                             <div class="profile_box_tableCell">
                                                 <div class="addquote_sendBtn">
-                                                    <input data-status="new" type="submit" data-type="{{$buttonType}}" value="Save" class="qt_common_sv_btn {{$saveButton}}">
+                                                    <input data-nonClient="{{$prev_type}}" data-status="new" type="submit" data-type="{{$buttonType}}" value="Save" class="qt_common_sv_btn {{$saveButton}}">
                                                 </div>
                                             </div>
                                             <div class="profile_box_tableCell">
                                                 <div class="addquote_sendBtn">
-                                                    <input type="submit" data-status="update" data-type="{{$sendEmailType}}" value="{{$sendMailBtnText}}" data-email="" data-id="" class="send_quote_in_email_btn">
+                                                    <input data-nonClient="{{$prev_type}}" type="submit" data-status="update" data-type="{{$sendEmailType}}" value="{{$sendMailBtnText}}" data-email="" data-id="" class="send_quote_in_email_btn">
                                                 </div>
                                             </div>
                                         </div>

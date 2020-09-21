@@ -12,7 +12,7 @@ $(document).ready(function(e) {
 
     $("body").on("click",".addClient_addBtn",function(){
 
-        var addClient_html = '<div class="addclient_appendRow"> <div class="profile_box"> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Adresse de Chantier:</strong> </div></div><div class="profile_box_tableCell"> </div></div><div class="add_client_detail"> <div class="add_client_detail_row"> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Rue:</strong> </div></div><div class="profile_box_tableCell"> <div class="profile_edit_feildOut"> <div class="profile_edit_feild"> <input type="text" name="work_address_street"> </div></div></div></div></div><div class="add_client_detail_row"> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Numero:</strong> </div></div><div class="profile_box_tableCell"> <div class="profile_edit_feildOut"> <div class="profile_edit_feild"> <input type="text" name="word_address_street_number"> </div></div></div></div></div><div class="add_client_detail_row"> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Code Postal:</strong> </div></div><div class="profile_box_tableCell"> <div class="profile_edit_feildOut"> <div class="profile_edit_feild"> <input type="text" name="work_address_postal_code"> </div></div></div></div></div><div class="add_client_detail_row"> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Municipalite:</strong> </div></div><div class="profile_box_tableCell"> <div class="profile_edit_feildOut"> <div class="profile_edit_feild"> <input type="text" name="work_address_municipality"> </div></div></div></div></div></div></div> <a style="display: block" class="addClient_delBtn" href="javascript:void(0);"><i class="fa fa-minus"></i></a> </div>';
+        var addClient_html = '<div class="addclient_appendRow"> <div class="profile_box"><div class="client_add_del"><a style="display:block" class="addClient_delBtn" href="javascript:void(0);"><i class="fa fa-minus"></i></a></div> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Adresse de Chantier:</strong> </div></div><div class="profile_box_tableCell"> </div></div><div class="add_client_detail"> <div class="add_client_detail_row"> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Rue:</strong> </div></div><div class="profile_box_tableCell"> <div class="profile_edit_feildOut"> <div class="profile_edit_feild"> <input type="text" name="work_address_street"> </div></div></div></div></div><div class="add_client_detail_row"> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Numero:</strong> </div></div><div class="profile_box_tableCell"> <div class="profile_edit_feildOut"> <div class="profile_edit_feild"> <input type="text" name="word_address_street_number"> </div></div></div></div></div><div class="add_client_detail_row"> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Code Postal:</strong> </div></div><div class="profile_box_tableCell"> <div class="profile_edit_feildOut"> <div class="profile_edit_feild"> <input type="text" name="work_address_postal_code"> </div></div></div></div></div><div class="add_client_detail_row"> <div class="menu_box_table"> <div class="profile_box_tableCell width30"> <div class="profile_box_text"> <strong>Municipalite:</strong> </div></div><div class="profile_box_tableCell"> <div class="profile_edit_feildOut"> <div class="profile_edit_feild"> <input type="text" name="work_address_municipality"> </div></div></div></div></div></div></div> </div>';
         $(".addclient_appendRow_main").find('.addclient_appendRow:first-child').after(addClient_html);
         //$(this).parent(".addclient_appendRow").addClass("active");
     });
@@ -25,7 +25,7 @@ $(document).ready(function(e) {
         // if(row_length === 1){
         // 	$(".addclient_appendRow").removeClass("active");
         // }
-        $(this).parent(".addclient_appendRow").remove();
+        $(this).closest(".addclient_appendRow").remove();
     });
 
 
@@ -63,7 +63,7 @@ $(document).ready(function(e) {
         //$(".addquote_appendRow_main").prepend(addquote_html);
 
         //$(this).closest('.addquote_appendRow_main').find('.addquote_appendRow').after(addquote_html)
-        $(".addquote_appendRow_main").find('.addquote_appendRow:first-child').after(addquote_html);
+        $(".addquote_appendRow_main").find('.addquote_appendRow:last-child').after(addquote_html);
         $(".addquote_appendRow").addClass("active");
         quoteCalculation();
         autosize(document.getElementsByClassName('qt_description'));

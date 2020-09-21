@@ -240,7 +240,7 @@
                     @php  $workAddressArr = json_decode($client->work_address, true);
                     @endphp
                     @if(($workAddressArr))
-                      @foreach($workAddressArr as $address)
+                      @foreach($workAddressArr as $key => $address)
 
                          <div class="addclient_appendRow">
                           <div class="profile_box">
@@ -320,9 +320,18 @@
                                 </div>
                               </div>
                             </div>
+                            <div class="client_add_del">
+                              @if($key == 0)
+                                <a  style="display: block" class="addClient_addBtn" href="javascript:void(0);"><i class="fa fa-plus"></i></a>
+                                <a  style="display: none" class="addClient_delBtn" href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+                              @else
+                                <a {{count($workAddressArr)}} style="display: {{$disbleCls != '' ? 'none' : 'block'}}" class="addClient_delBtn" href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+                                @endif
+
+
+                            </div>
                           </div>
-                          <a style="display: {{$disbleCls != '' ? 'none' : 'block'}}" class="addClient_addBtn" href="javascript:void(0);"><i class="fa fa-plus"></i></a>
-                          <a style="display: {{$disbleCls != '' ? 'none' : 'block'}}" class="addClient_delBtn" href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+
                         </div>
 
                       @endforeach

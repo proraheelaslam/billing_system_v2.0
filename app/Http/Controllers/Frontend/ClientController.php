@@ -29,7 +29,7 @@ class ClientController extends Controller
      */
     public function index(){
 
-        $clients = Client::where('user_id', Auth::id())->orderBy('id','desc')->get();
+        $clients = Client::where('user_id', Auth::id())->orderBy('last_name')->get();
         $type = 'clients';
         return view($this->viewPath.'/clients/list', compact('clients','type'));
     }

@@ -36,7 +36,7 @@ class Client extends Model
     public function quotes(){
 
         return $this->hasMany(Quote::class,'client_id')
-                                                ->where('type','quote');
+                                                ->where('type','quote')->orderBy('created_at','desc');
     }
 
 
@@ -44,7 +44,7 @@ class Client extends Model
 
         return $this->hasMany(Quote::class,'client_id')
                                            ->whereIn('type',['bill','quote'])
-                                           ->whereIn('is_quote_converted',[1]);
+                                           ->whereIn('is_quote_converted',[1])->orderBy('created_at','desc');
 
     }
 }
